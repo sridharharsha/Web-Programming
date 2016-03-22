@@ -1,0 +1,112 @@
+package csjobs.model;
+
+import java.io.Serializable;
+import java.util.Calendar;
+import java.util.List;
+
+
+
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "applicant_details")
+public class ApplicantDetails implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue
+	private Long id;
+	
+	@Column(name = "current_job")
+	private String currentJobTitle;
+	
+	@Column(name = "current_company")
+	private String currentCompany;
+	
+	@Column(name = "start_year")
+	private Calendar startYear;
+	
+	@OneToMany
+	@JoinTable(name = "applicant_degrees",
+    joinColumns = { @JoinColumn(name = "applicant_id") },
+    inverseJoinColumns = { @JoinColumn(name = "degree_id") })
+	private List<Degree> degrees;
+	
+	@OneToMany
+	@JoinTable(name = "applicant_files",
+    joinColumns = { @JoinColumn(name = "applicant_id") },
+    inverseJoinColumns = { @JoinColumn(name = "file_id") })
+	private List<File> files;
+	
+	@OneToOne
+	private User user;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getCurrentJobTitle() {
+		return currentJobTitle;
+	}
+
+	public void setCurrentJobTitle(String currentJobTitle) {
+		this.currentJobTitle = currentJobTitle;
+	}
+
+	public String getCurrentCompany() {
+		return currentCompany;
+	}
+
+	public void setCurrentCompany(String currentCompany) {
+		this.currentCompany = currentCompany;
+	}
+
+	public Calendar getStartYear() {
+		return startYear;
+	}
+
+	public void setStartYear(Calendar startYear) {
+		this.startYear = startYear;
+	}
+
+	public List<Degree> getDegrees() {
+		return degrees;
+	}
+
+	public void setDegrees(List<Degree> degrees) {
+		this.degrees = degrees;
+	}
+
+	public List<File> getFiles() {
+		return files;
+	}
+
+	public void setFiles(List<File> files) {
+		this.files = files;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	
+
+}

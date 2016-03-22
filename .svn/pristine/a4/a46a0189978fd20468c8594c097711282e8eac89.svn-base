@@ -1,0 +1,15 @@
+package csjobs.model.dao;
+
+import java.util.List;
+
+import csjobs.model.JobPosition;
+
+public interface JobPositionDao {
+	
+    List<JobPosition> getAllJobs();
+    
+    List<JobPosition> getAllJobsForReviewer(Long id);
+    
+    JobPosition getApplicantForSingleJob(Long jobId,Long appId);
+
+}

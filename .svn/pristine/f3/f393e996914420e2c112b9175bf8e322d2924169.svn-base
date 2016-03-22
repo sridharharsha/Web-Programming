@@ -1,0 +1,122 @@
+package csjobs.model;
+
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "job_positions")
+public class JobPosition implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue
+	private Long id;
+	
+	@Column(name = "job_title")
+	private String title;
+	
+	@Column(name = "job_description", length = 500)
+	private String description;
+	
+	@Column(name = "job_publish_date")
+	private Date publishDate;
+	
+	@Column(name = "job_end_date")
+	private Date endDate;
+	
+	@ManyToMany
+	@JoinTable(name = "job_position_reviewers",
+    joinColumns = { @JoinColumn(name = "job_position_id") },
+    inverseJoinColumns = { @JoinColumn(name = "user_id") })
+	private List<User> reviewers;
+	
+	@OneToMany
+	@JoinTable(name = "job_position_applicants",
+    joinColumns = { @JoinColumn(name = "job_position_id") },
+    inverseJoinColumns = { @JoinColumn(name = "applicant_id") })
+	private List<ApplicantDetails> jobApplicants;
+	
+	@OneToOne
+	private User chair;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Date getPublishDate() {
+		return publishDate;
+	}
+
+	public void setPublishDate(Date publishDate) {
+		this.publishDate = publishDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
+	public List<User> getReviewers() {
+		return reviewers;
+	}
+
+	public void setReviewers(List<User> reviewers) {
+		this.reviewers = reviewers;
+	}
+
+	public List<ApplicantDetails> getJobApplicants() {
+		return jobApplicants;
+	}
+
+	public void setJobApplicants(List<ApplicantDetails> jobApplicants) {
+		this.jobApplicants = jobApplicants;
+	}
+
+	public User getChair() {
+		return chair;
+	}
+
+	public void setChair(User chair) {
+		this.chair = chair;
+	}
+	
+	
+	
+
+}

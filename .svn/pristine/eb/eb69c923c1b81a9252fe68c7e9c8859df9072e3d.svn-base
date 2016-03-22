@@ -1,0 +1,11 @@
+package csjobs.model.dao;
+
+import csjobs.model.Application;
+
+public interface ApplicationDao {
+	
+	Application saveApplication(Application application);
+	
+	Application getApplication(Long id);
+
+}

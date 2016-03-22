@@ -1,0 +1,17 @@
+package csjobs.model.dao;
+
+import java.util.List;
+
+import csjobs.model.Job;
+
+
+public interface JobDao {
+	
+    List<Job> getPublishedJobs();
+    
+    Job getJobById( Long id );
+    
+    List<Job> getOpenJobPositions( Long id );
+    
+
+}

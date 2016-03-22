@@ -1,0 +1,105 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    
+    <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+    
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Apply</title>
+</head>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+
+<script type="text/javascript">
+
+var degreeCount = 0;
+
+function addDegrees(){
+	degreeCount++;
+	$("#addDegreeDiv").append("<div id='addDegree"+degreeCount+"'><input type='text' placeholder='Degree' class='form-control' style='width:20%;' id='degreeName"+degreeCount+"' name='degreeName"+degreeCount+"' value=''/>&nbsp"+
+							"&nbsp<input type='text' class='form-control' style='width:20%;margin-top:-5%;margin-left:25%;' placeholder='University' id='universityName"+degreeCount+"' name='universityName"+degreeCount+"' value=''/>&nbsp"+
+							"&nbsp<input type='text' class='form-control' style='width:20%;margin-top:-5%;margin-left:50%;' placeholder='Year' id='degreeYear"+degreeCount+"' name='degreeYear"+degreeCount+"' value=''/>&nbsp"+
+							"<br/><input type='button' value='Finish' class='btn btn-primary' id='finish"+degreeCount+"' onclick='javascript:saveDegree("+degreeCount+")'/>"+"</div>");
+	$("#addDegreeBtnId").hide();
+	$("#degreeCnt").val(degreeCount);
+}
+
+function saveDegree(degCnt){
+	var degree = $("#degreeName"+degCnt).val();
+	var university = $("#universityName"+degCnt).val();
+	var year = $("#degreeYear"+degCnt).val();
+	if(degree == "" || degree == null){
+		return false;
+	}
+	if(university == "" || university == null){
+		return false;
+	}
+	
+	if(year == "" || year == null){
+		return false;
+	}
+	
+	$("#degreeDetailsDiv").append("<div id='degreeDetailsDiv"+degCnt+"'><input type='hidden' id='saveDegName"+degCnt+"' name='saveDegName"+degCnt+"'value='"+degree+"'/>"+
+								  "<input type='hidden' id='saveUnivName"+degCnt+"' name='saveUnivName"+degCnt+"'value='"+university+"'/>"+"<input type='hidden' id='saveYear"+degCnt+"' name='saveYear"+degCnt+"'value='"+year+"'/>"+"</div>");
+	$("#addDegreeBtnId").show();
+	$("#addDegree"+degCnt).html("<h3 style='margin-top: 1%;margin-bottom: 1%;'>"+degree+"<small>"+university+"</small></h3>");
+}
+
+</script>
+
+<body>
+	
+	<div class="container" style="margin-top: 2%;">
+		
+		<div class="well">
+			<div class="pull-right">
+				<form action="<c:url value='/logout'/>" method="POST">
+			  		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+			  		<input name="submit" type="submit" class="btn btn-primary" value="Logout" />
+				</form>
+			</div>
+
+			<ol class="breadcrumb">
+		  		<li><a href="applicant.html"><b>${user.firstName } ${user.lastName }</b></a></li>
+		  		<li class="active"><b>Apply</b></li>
+			</ol>
+			
+			<h2>Job: <small>${jobApplying.title}</small></h2><br/>
+			
+			<form action="apply.html?${_csrf.parameterName}=${_csrf.token}" method="post" enctype="multipart/form-data">
+		
+			<input type="text" value="" name="currentJobTitle" placeholder="Current Job" class="form-control" style="width:30%;"/><br/>
+	
+			<input type="text" value="" name="currentJobInstitution" placeholder="Current Company" class="form-control" style="width:30%;"/><br/>
+			
+			<input type="text" value="" name="currentJobYear" placeholder="Start Year"  class="form-control" style="width:30%;" /><br/>
+			
+			<input type="hidden" name="jobId" id="jobId" value="${jobApplying.id}"/>
+			
+			<br/><br/>
+			<input type="button" value="Add Degree" id="addDegreeBtnId" class="btn btn-default" onclick="javascript:addDegrees();"/>
+			
+			<input type="hidden" value="" id="degreeCnt" name="degreeCnt">
+			<div id="addDegreeDiv">
+				
+			</div>
+			
+			<div id="degreeDetailsDiv" style="display: none;">
+					
+			</div>
+			<br/><br/>
+			<label>CV:<input type="file" name="cv"></label>
+			<label>Research Statement:<input type="file" name="research"></label>
+			<label>Teaching Statement:<input type="file" name="teaching"></label>			
+			<br/><br/>
+			<input type="submit" class="btn btn-success" value="Apply">
+		</form>
+	</div>
+</div>
+	
+	
+</body>
+</html>

@@ -1,0 +1,23 @@
+drop table applicant_files;
+
+drop table applicant_degrees;
+
+drop table files;
+
+drop table degrees;
+
+drop table job_position_reviewers;
+
+drop table job_position_applicants;
+
+drop table reviewer;
+
+drop table applicant_details;
+
+drop table job_positions;
+
+drop table roles;
+
+drop table users;
+
+drop sequence hibernate_sequence;

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="4" passed="4">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="2271" started-at="2015-07-17T02:09:42Z" finished-at="2015-07-17T02:09:44Z">
+    <groups>
+      <group name="CSJobsDaoTest">
+        <method signature="CSJobsDaoTest.getAllJobs()[pri:0, instance:csjobs.model.dao.CSJobsDaoTest@54d9be5a]" name="getAllJobs" class="csjobs.model.dao.CSJobsDaoTest"/>
+        <method signature="CSJobsDaoTest.getJobForSingleApplicant()[pri:0, instance:csjobs.model.dao.CSJobsDaoTest@54d9be5a]" name="getJobForSingleApplicant" class="csjobs.model.dao.CSJobsDaoTest"/>
+        <method signature="CSJobsDaoTest.getReviewerJobs()[pri:0, instance:csjobs.model.dao.CSJobsDaoTest@54d9be5a]" name="getReviewerJobs" class="csjobs.model.dao.CSJobsDaoTest"/>
+        <method signature="CSJobsDaoTest.getUsers()[pri:0, instance:csjobs.model.dao.CSJobsDaoTest@54d9be5a]" name="getUsers" class="csjobs.model.dao.CSJobsDaoTest"/>
+      </group> <!-- CSJobsDaoTest -->
+    </groups>
+    <test name="Default test" duration-ms="2271" started-at="2015-07-17T02:09:42Z" finished-at="2015-07-17T02:09:44Z">
+      <class name="csjobs.model.dao.CSJobsDaoTest">
+        <test-method status="PASS" signature="springTestContextBeforeTestClass()[pri:0, instance:csjobs.model.dao.CSJobsDaoTest@54d9be5a]" name="springTestContextBeforeTestClass" is-config="true" duration-ms="8" started-at="2015-07-16T19:09:42Z" finished-at="2015-07-16T19:09:42Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestClass -->
+        <test-method status="PASS" signature="springTestContextPrepareTestInstance()[pri:0, instance:csjobs.model.dao.CSJobsDaoTest@54d9be5a]" name="springTestContextPrepareTestInstance" is-config="true" duration-ms="1998" started-at="2015-07-16T19:09:42Z" depends-on-methods="org.springframework.test.context.testng.AbstractTestNGSpringContextTests.springTestContextBeforeTestClass" finished-at="2015-07-16T19:09:44Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextPrepareTestInstance -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:csjobs.model.dao.CSJobsDaoTest@54d9be5a]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="52" started-at="2015-07-16T19:09:44Z" finished-at="2015-07-16T19:09:44Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void csjobs.model.dao.CSJobsDaoTest.getAllJobs()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="getAllJobs()[pri:0, instance:csjobs.model.dao.CSJobsDaoTest@54d9be5a]" name="getAllJobs" duration-ms="150" started-at="2015-07-16T19:09:44Z" finished-at="2015-07-16T19:09:44Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getAllJobs -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:csjobs.model.dao.CSJobsDaoTest@54d9be5a]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="6" started-at="2015-07-16T19:09:44Z" finished-at="2015-07-16T19:09:44Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void csjobs.model.dao.CSJobsDaoTest.getAllJobs()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:csjobs.model.dao.CSJobsDaoTest@54d9be5a]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="4" started-at="2015-07-16T19:09:44Z" finished-at="2015-07-16T19:09:44Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void csjobs.model.dao.CSJobsDaoTest.getJobForSingleApplicant()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="getJobForSingleApplicant()[pri:0, instance:csjobs.model.dao.CSJobsDaoTest@54d9be5a]" name="getJobForSingleApplicant" duration-ms="14" started-at="2015-07-16T19:09:44Z" finished-at="2015-07-16T19:09:44Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getJobForSingleApplicant -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:csjobs.model.dao.CSJobsDaoTest@54d9be5a]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="3" started-at="2015-07-16T19:09:44Z" finished-at="2015-07-16T19:09:44Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void csjobs.model.dao.CSJobsDaoTest.getJobForSingleApplicant()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:csjobs.model.dao.CSJobsDaoTest@54d9be5a]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="2" started-at="2015-07-16T19:09:44Z" finished-at="2015-07-16T19:09:44Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void csjobs.model.dao.CSJobsDaoTest.getReviewerJobs()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="getReviewerJobs()[pri:0, instance:csjobs.model.dao.CSJobsDaoTest@54d9be5a]" name="getReviewerJobs" duration-ms="8" started-at="2015-07-16T19:09:44Z" finished-at="2015-07-16T19:09:44Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getReviewerJobs -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:csjobs.model.dao.CSJobsDaoTest@54d9be5a]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="3" started-at="2015-07-16T19:09:44Z" finished-at="2015-07-16T19:09:44Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void csjobs.model.dao.CSJobsDaoTest.getReviewerJobs()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:csjobs.model.dao.CSJobsDaoTest@54d9be5a]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="2" started-at="2015-07-16T19:09:44Z" finished-at="2015-07-16T19:09:44Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void csjobs.model.dao.CSJobsDaoTest.getUsers()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="getUsers()[pri:0, instance:csjobs.model.dao.CSJobsDaoTest@54d9be5a]" name="getUsers" duration-ms="4" started-at="2015-07-16T19:09:44Z" finished-at="2015-07-16T19:09:44Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getUsers -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:csjobs.model.dao.CSJobsDaoTest@54d9be5a]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="3" started-at="2015-07-16T19:09:44Z" finished-at="2015-07-16T19:09:44Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void csjobs.model.dao.CSJobsDaoTest.getUsers()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextAfterTestClass()[pri:0, instance:csjobs.model.dao.CSJobsDaoTest@54d9be5a]" name="springTestContextAfterTestClass" is-config="true" duration-ms="0" started-at="2015-07-16T19:09:44Z" finished-at="2015-07-16T19:09:44Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestClass -->
+      </class> <!-- csjobs.model.dao.CSJobsDaoTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

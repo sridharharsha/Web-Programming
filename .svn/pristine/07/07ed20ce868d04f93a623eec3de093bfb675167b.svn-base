@@ -1,0 +1,240 @@
+
+
+
+    create table applicant_degrees (
+        applicant_id int8 not null,
+        degree_id int8 not null
+    );
+
+    create table applicant_details (
+        id int8 not null,
+        current_company varchar(255),
+        current_job varchar(255),
+        start_year timestamp,
+        user_id int8,
+        primary key (id)
+    );
+
+    create table applicant_files (
+        applicant_id int8 not null,
+        file_id int8 not null
+    );
+
+    create table degrees (
+        id int8 not null,
+        name varchar(255),
+        university varchar(255),
+        year timestamp,
+        primary key (id)
+    );
+
+    create table files (
+        id int8 not null,
+        name varchar(255),
+        path varchar(255),
+        type varchar(255),
+        primary key (id)
+    );
+
+    create table job_position_applicants (
+        job_position_id int8 not null,
+        applicant_id int8 not null
+    );
+
+    create table job_position_reviewers (
+        job_position_id int8 not null,
+        user_id int8 not null
+    );
+
+    create table job_positions (
+        id int8 not null,
+        job_description varchar(500),
+        job_end_date timestamp,
+        job_publish_date timestamp,
+        job_title varchar(255),
+        chair_id int8,
+        primary key (id)
+    );
+
+    create table reviewer (
+        id int8 not null,
+        comments varchar(500),
+        rank int4,
+        applicant_id int8,
+        jobPosition_id int8,
+        user_id int8,
+        primary key (id)
+    );
+
+    create table roles (
+        user_id int8 not null,
+        role_name varchar(255)
+    );
+
+    create table users (
+        id int8 not null,
+        address varchar(255),
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        phone varchar(255),
+        primary key (id)
+    );
+
+    alter table applicant_degrees 
+        add constraint UK_muxh6hn5p7wjuofp81k3jvr1f unique (degree_id);
+
+    alter table applicant_files 
+        add constraint UK_6bn1ch34eupum5hquxnha8b9n unique (file_id);
+
+    alter table job_position_applicants 
+        add constraint UK_90tw2ydx4n90thdki2i3fbhl unique (applicant_id);
+
+    alter table applicant_degrees 
+        add constraint FK_muxh6hn5p7wjuofp81k3jvr1f 
+        foreign key (degree_id) 
+        references degrees;
+
+    alter table applicant_degrees 
+        add constraint FK_2apkk5i04xfa82tuj0sj4q8k0 
+        foreign key (applicant_id) 
+        references applicant_details;
+
+    alter table applicant_details 
+        add constraint FK_lrbmndwkne7nv01fdod3dcolj 
+        foreign key (user_id) 
+        references users;
+
+    alter table applicant_files 
+        add constraint FK_6bn1ch34eupum5hquxnha8b9n 
+        foreign key (file_id) 
+        references files;
+
+    alter table applicant_files 
+        add constraint FK_pqspoakiottyhufn8yt9yergg 
+        foreign key (applicant_id) 
+        references applicant_details;
+
+    alter table job_position_applicants 
+        add constraint FK_90tw2ydx4n90thdki2i3fbhl 
+        foreign key (applicant_id) 
+        references applicant_details;
+
+    alter table job_position_applicants 
+        add constraint FK_q8svjr9ytp665gqjyspypw55j 
+        foreign key (job_position_id) 
+        references job_positions;
+
+    alter table job_position_reviewers 
+        add constraint FK_gu0ged59pwggxmsby0muys0pm 
+        foreign key (user_id) 
+        references users;
+
+    alter table job_position_reviewers 
+        add constraint FK_8835ew2knftc5bfr5lhqv5n0b 
+        foreign key (job_position_id) 
+        references job_positions;
+
+    alter table job_positions 
+        add constraint FK_gj50f99n9x50lre3x8dmxt46c 
+        foreign key (chair_id) 
+        references users;
+
+    alter table reviewer 
+        add constraint FK_i82lty7i4bg04i8nea5lwr69h 
+        foreign key (applicant_id) 
+        references applicant_details;
+
+    alter table reviewer 
+        add constraint FK_n581hvdf1yhn33fiwyjr1p105 
+        foreign key (jobPosition_id) 
+        references job_positions;
+
+    alter table reviewer 
+        add constraint FK_mddqbnwebyrfciyki2mwlkgyh 
+        foreign key (user_id) 
+        references users;
+
+    alter table roles 
+        add constraint FK_rhrcyw5rkf3db7urabnxic6hk 
+        foreign key (user_id) 
+        references users;
+
+    create sequence hibernate_sequence;
+
+
+insert into users values('1','alhambra','admin@localhost.localdomain','John','Doe','abcd','123456');
+
+insert into users values('2','valley','reviewer1@localhost.localdomain','Joe','Boxer','abcd','456');
+
+insert into users values('3','atlantic','reviewer2@localhost.localdomain','Mary','Boxer','abcd','123');
+
+insert into users values('4','elmonte','reviewer3@localhost.localdomain','Jack','Cooper','abcd','789');
+
+insert into users values('5','rosemead','reviewer4@localhost.localdomain','Jane','Cooper','abcd','626');
+
+insert into users values('6','monterey','applicant1@localhost.localdomain','Steve','Smith','abcd','231');
+
+insert into users values('7','pasadena','applicant2@localhost.localdomain','Sharon','Smith','abcd','9129');
+
+insert into roles values('1','ROLE_ADMIN');
+
+insert into roles values('2','ROLE_REVIEWER');
+
+insert into roles values('3','ROLE_REVIEWER');
+
+insert into roles values('4','ROLE_REVIEWER');
+
+insert into roles values('5','ROLE_REVIEWER');
+
+insert into roles values('6','ROLE_APPLICANT');
+
+insert into roles values('7','ROLE_APPLICANT');
+
+insert into job_positions values('1','a decent part time job','2015-07-20 00:00:00','2015-07-14 00:00:00','Tenure-Track Faculty Position (Start Fall 2015)','2');
+
+insert into job_positions values('2','a very well paid job','2015-07-25 00:00:00','2015-07-10 00:00:00','Tenure-Track Faculty Position (Start Fall 2016)','3');
+
+insert into applicant_details values('1','Intel','Programmer','2012-02-10','6');
+
+insert into applicant_details values('2','Cisco','Team Lead','2010-10-05','7');
+
+insert into degrees values('1','BS','UCLA','2005-05-20');
+
+insert into degrees values('2','MS','UCLA','2007-05-15');
+
+insert into degrees values('3','BS','USC','2002-12-16');
+
+insert into degrees values('4','MS','Stanford','2005-08-24');
+
+insert into applicant_degrees values('1','1');
+
+insert into applicant_degrees values('1','2');
+
+insert into applicant_degrees values('2','3');
+
+insert into applicant_degrees values('2','4');
+
+insert into job_position_applicants values('1','1');
+
+insert into job_position_applicants values('1','2');
+
+insert into job_position_reviewers values('1','2');
+
+insert into job_position_reviewers values('1','3');
+
+insert into job_position_reviewers values('1','4');
+
+insert into job_position_reviewers values('2','3');
+
+insert into job_position_reviewers values('2','4');
+
+insert into job_position_reviewers values('2','5');
+
+
+
+
+
+
+

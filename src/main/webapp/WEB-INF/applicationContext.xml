@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:security="http://www.springframework.org/schema/security"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.1.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security-4.0.xsd">
+
+    <bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close">
+        <property name="driverClassName" value="org.postgresql.Driver" />
+        <property name="url" value="jdbc:postgresql://localhost:5432/csjobs" />
+        <property name="username" value="csjobs" />
+        <property name="password" value="abcd" />
+        <property name="initialSize" value="1" />
+    </bean>
+
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitName" value="csjobs" />
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+
+    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+
+    <context:annotation-config />
+
+    <tx:annotation-driven />
+    
+     <security:authentication-manager>
+        <security:authentication-provider>
+            <security:jdbc-user-service data-source-ref="dataSource" 
+            users-by-username-query="select email,password,enabled from users where email = ?"
+            authorities-by-username-query="select u.email,a.role from users u,authorities a where u.id = a.user_id and u.email = ?"
+            />
+        </security:authentication-provider>
+    </security:authentication-manager>
+    
+     <security:http auto-config="true">
+        <security:form-login login-page="/login.html" default-target-url="/dashboard.html" authentication-failure-url="/login.html"/>
+        <security:logout logout-success-url="/"/>
+        <security:intercept-url pattern="/csjobs/**" access="authenticated" />
+        <security:intercept-url pattern="/addJob.html" access="hasRole('ROLE_ADMIN') and authenticated" />
+        <security:intercept-url pattern="/editJob.html" access="hasRole('ROLE_ADMIN') and authenticated" />
+        <security:intercept-url pattern="/applications.html" access="(hasRole('ROLE_ADMIN') or hasRole('ROLE_REVIEWER')) and authenticated" />
+        <security:intercept-url pattern="/apply.html" access="hasRole('ROLE_APPLICANT') and authenticated" />
+        <security:intercept-url pattern="/application-info.html" access="(hasRole('ROLE_ADMIN') or hasRole('ROLE_REVIEWER') or hasRole('ROLE_APPLICANT')) and authenticated" />
+    </security:http>
+    
+    <security:global-method-security pre-post-annotations="enabled">
+    </security:global-method-security>
+
+    <context:component-scan base-package="csjobs.model" />
+
+</beans>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Default suite]">
+  <test name="Default test(failed)">
+    <classes>
+      <class name="csjobs.model.dao.CSJobsDaoTest">
+        <methods>
+          <include name="springTestContextAfterTestClass"/>
+          <include name="springTestContextBeforeTestClass"/>
+          <include name="getJobForSingleApplicant"/>
+          <include name="springTestContextBeforeTestMethod"/>
+          <include name="getReviewerJobs"/>
+          <include name="springTestContextPrepareTestInstance"/>
+          <include name="getAllJobs"/>
+          <include name="springTestContextAfterTestMethod"/>
+        </methods>
+      </class> <!-- csjobs.model.dao.CSJobsDaoTest -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->
